@@ -1,0 +1,88 @@
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+/* Common styles */
+@import url('./reset.css');
+@import url('./base.css');
+
+input {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 360px;
+  height: 40px;
+  margin: 30px;
+}
+ input::placeholder{
+  padding-left: 16px;
+ }
+.btn{
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 86px;
+  height: 40px;
+  background: #4e75ff;
+  text-align: center;
+  justify-content: baseline;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin-top: 16px;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #6c8cff;
+
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-item {
+  width: calc(33.333% - 10px);
+background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  justify-content: center;
+    align-items: center;
+
+}
+.info {
+  display: flex;
+  flex-direction: row;
+  gap:16px;
+  padding: 10px;
+  font-size: 20px;
+
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
