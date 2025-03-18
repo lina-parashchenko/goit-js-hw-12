@@ -27,8 +27,9 @@ function createGalleryMarkup(images) {
 }
 
 
-export function renderGallery(images) {
-  gallery.innerHTML = ""; 
+export function renderGallery(images, append = false) {
+  if (!append) { gallery.innerHTML = ""; }
+  
   gallery.insertAdjacentHTML("beforeend", createGalleryMarkup(images));
 
   

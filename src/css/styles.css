@@ -8,16 +8,37 @@
 @import url('./reset.css');
 @import url('./base.css');
 
+.form{
+  margin: auto;
+}
+
+
 input {
   border: 1px solid #808080;
   border-radius: 4px;
   width: 360px;
   height: 40px;
   margin: 30px;
+  font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #000;
+    padding-left: 16px;
 }
+
  input::placeholder{
   padding-left: 16px;
+  font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #808080;
  }
+
+
 .btn{
   border-radius: 8px;
   padding: 8px 16px;
@@ -47,6 +68,7 @@ input {
   padding: 0;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .gallery-item {
@@ -85,4 +107,16 @@ background: #fff;
 
 .hidden {
   display: none;
+}
+
+.load-more{
+  border-radius: 8px;
+    padding: 8px 16px;
+    width: 125px;
+    height: 40px;
+    background: #4e75ff;
+    color: #fff;
+ margin: auto;
+ border: none;
+ 
 }

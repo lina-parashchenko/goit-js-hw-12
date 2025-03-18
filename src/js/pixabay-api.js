@@ -5,7 +5,7 @@ const BASE_URL = "https://pixabay.com/api/";
 
 
 
-export async function fetchImages(query) {
+export async function fetchImages(query, page = 1, perPage = 15) {
   try {
     const response = await axios.get(BASE_URL, {
       params: {
@@ -14,16 +14,28 @@ export async function fetchImages(query) {
         image_type: "photo",
         orientation: "horizontal",
         safesearch: true,
-        t: new Date().getTime(),
+       
+         page: page,
+        per_page: perPage,
       },
     });
 
- console.log(response.data);
+      if (response.data.hits.length === 0) {
+      throw new Error("No images found");
+    }
 
-    return response.data.hits;
+
+
+    return {
+      images: response.data.hits,
+      total: response.data.totalHits,
+    };
   } catch (error) {
     console.error("Error fetching images:", error);
-    return [];
+    throw error;
+    
+    
+    
   }
 }
 
