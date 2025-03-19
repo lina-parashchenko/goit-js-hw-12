@@ -36,10 +36,10 @@ form.addEventListener("submit", async (event) => {
   loader.classList.remove("hidden");
   spinner.spin(loader);
 
-//*document.querySelector(".gallery").innerHTML = "";
+document.querySelector(".gallery").innerHTML = "";
 
   loader.classList.remove("hidden"); 
-  spinner.spin(loader); //*
+  spinner.spin(loader); 
 
   try {
     const { images, total } = await fetchImages(query, page, perPage);
@@ -68,6 +68,20 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
+function smoothScrollAfterImagesLoad() {
+    const firstCard = document.querySelector(".gallery-item"); 
+    if (!firstCard) return;
+
+    const cardHeight = firstCard.getBoundingClientRect().height; // Отримуємо висоту картки
+
+    window.scrollBy({
+        top: cardHeight * 2, // Прокручуємо на дві висоти картки
+        left: 0,
+        behavior: "smooth",
+    });
+}
+
+
 loadMoreBtn.addEventListener("click", async () => {
   page += 1;
   loadMoreBtn.classList.add("hidden");
@@ -88,6 +102,7 @@ loadMoreBtn.addEventListener("click", async () => {
       renderGallery(images, true);
       loadMoreBtn.classList.remove("hidden");
       
+      setTimeout(smoothScrollAfterImagesLoad, 500);
     }
     
   } catch (error) {

@@ -14,7 +14,7 @@ export async function fetchImages(query, page = 1, perPage = 15) {
         image_type: "photo",
         orientation: "horizontal",
         safesearch: true,
-       
+        t: new Date().getTime(),
          page: page,
         per_page: perPage,
       },
