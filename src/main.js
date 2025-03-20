@@ -46,9 +46,9 @@ document.querySelector(".gallery").innerHTML = "";
     totalHits = total;
 
     if (images.length === 0) {
-      iziToast.error({
-        title: "Error",
-        message: "Sorry, no images found. Please try again!",
+      iziToast.info({
+        title: "Info",
+        message: "We're sorry, but you've reached the end of search results.",
         position: "topRight",
       });
     } else {
@@ -66,16 +66,26 @@ document.querySelector(".gallery").innerHTML = "";
     spinner.stop(); 
     loader.classList.add("hidden"); 
   }
+  const totalPages = Math.ceil(totalHits / perPage);
+            if (page < totalPages) {
+                loadMoreBtn.classList.remove("hidden");
+            } else {
+                iziToast.info({
+                    title: "Info",
+                    message: "We're sorry, but you've reached the end of search results.",
+                    position: "topRight",
+                });
+            }
 });
 
 function smoothScrollAfterImagesLoad() {
     const firstCard = document.querySelector(".gallery-item"); 
     if (!firstCard) return;
 
-    const cardHeight = firstCard.getBoundingClientRect().height; // Отримуємо висоту картки
+    const cardHeight = firstCard.getBoundingClientRect().height; 
 
     window.scrollBy({
-        top: cardHeight * 2, // Прокручуємо на дві висоти картки
+        top: cardHeight * 2, 
         left: 0,
         behavior: "smooth",
     });
